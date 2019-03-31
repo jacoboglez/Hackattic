@@ -1,5 +1,6 @@
 import requests
 import json
+import zipfile
 
 def image_request(image_url, image_name = "image.png"):
     res = requests.get(image_url)
@@ -9,6 +10,15 @@ def image_request(image_url, image_name = "image.png"):
         handler.write(res.content)
     print('Image obtained.')
 
+
+def file_request(zip_url, zip_name = "file"):
+    res = requests.get(zip_url, stream = True)
+    res.raise_for_status()
+
+    with open(zip_name, 'wb') as download_file:
+        download_file.write(res.content)
+
+    print('File obtained.')
 
 
 def read_token(token_file):
@@ -28,6 +38,7 @@ def data_request(challenge_name, token):
     challenge_dict = res.json()
 
     return challenge_dict
+
 
 def solution_post(challenge_name, token, challenge_solution):
     # Construct the challenge URL
