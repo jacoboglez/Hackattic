@@ -1,0 +1,4 @@
+*.config
+.vscode
+__pycache__/
+zip/
