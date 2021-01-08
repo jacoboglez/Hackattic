@@ -1,0 +1,7 @@
+pylibscrypt
+requests
+websockets
+pillow 
+pytesseract
+# sudo apt-get install tesseract-ocr
+opencv-python
